@@ -1,47 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
-import icnArrow01 from "../images/icn-arrow01.svg";
-import icnArrow02 from "../images/icn-arrow02.svg";
-import icnInstagram from "../images/icn-instagram.svg";
-import icnLike from "../images/icn-heart.svg";
-import icnLikeFill from "../images/icn-heart__filled.svg";
 import icnLocation from "../images/icn-location.svg";
+import icnArrow02 from "../images/icn-arrow02.svg";
 import icnTime from "../images/icn-time.svg";
 import icnPhone from "../images/icn-phone.svg";
 import imgDetail from "../images/img-detail__main.svg";
+import Header from "components/Header";
 
 const Wrapper = styled.div``;
-const Header = styled.header`
-  display: flex;
-  width: 100%;
-  height: 70px;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 25px;
-`;
-const BtnBack = styled.button`
-  border: 0;
-  background: none;
-  padding: 2px;
-`;
-const Title = styled.h2`
-  font-size: 20px;
-  font-weight: 700;
-`;
-const Instagram = styled.input`
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  background: url(${icnInstagram}) no-repeat 50% 50%;
-  border: none;
-`;
-const Like = styled.input`
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  background: url(${icnLike}) no-repeat 50% 50%;
-  border: none;
-`;
+
 const Main = styled.main`
   padding: 0 30px;
 `;
@@ -148,14 +116,9 @@ const BtnMore = styled.button`
   border: none;
 `;
 
-const DetailPage = () => {
-  const [btnLike, setBtnLike] = useState(false);
+const DetailPage = ({ cafeId }) => {
   const [btnMore, setBtnMore] = useState(false);
-
-  const toggleLike = () => {
-    setBtnLike(!btnLike);
-    console.log(btnLike);
-  };
+  const navigate = useNavigate();
 
   const toggleMore = () => {
     setBtnMore(!btnMore);
@@ -164,21 +127,11 @@ const DetailPage = () => {
 
   const btnLive = (event) => {
     event.preventDefault();
+    navigate(`/detail/${cafeId}/table`);
   };
   return (
     <Wrapper>
-      <Header>
-        <div>
-          <BtnBack type="button">
-            <img src={icnArrow01} />
-          </BtnBack>
-        </div>
-        <Title>카페 여기</Title>
-        <div>
-          <Instagram type="button" />
-          <Like type="button" onClick={toggleLike} />
-        </div>
-      </Header>
+      <Header />
       <Main>
         <ImgCover>
           <CafeImg />
