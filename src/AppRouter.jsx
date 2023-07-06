@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SubscribePage from "pages/SubscribePage";
 import SignPage from "pages/SignPage";
 import DetailPage from "pages/DetailPage";
-import TalbePage from "pages/TalbePage";
+import TablePage from "pages/TablePage";
 import NotFoundPage from "pages/NotFoundPage";
 import Layout from "components/Layout";
 
@@ -14,7 +14,7 @@ const AppRouter = () => {
           <Route path="/" element={<SubscribePage />}></Route>
           <Route path="/sign" element={<SignPage />}></Route>
           <Route path="/detail/:id" element={<DetailPage />}></Route>
-          <Route path="/detail/:id/table" element={<TalbePage />}></Route>
+          <Route path="/detail/:id/table" element={<TablePage />}></Route>
           <Route path="*" element={<NotFoundPage />}></Route>
         </Route>
       </Routes>
